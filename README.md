@@ -3,9 +3,9 @@
 
   # Depot
 
-  **A native macOS process manager for pnpm / npm monorepos.**
+  **专为 pnpm / npm Monorepo 打造的原生 macOS 进程管理器。**
 
-  Run, monitor, and control all your workspace scripts from a single panel — without opening a terminal.
+  在单一面板中运行、监控并控制所有工作区脚本，无需打开终端。
 
   ![macOS](https://img.shields.io/badge/macOS-26%2B-black?logo=apple)
   ![Swift](https://img.shields.io/badge/Swift-5-orange?logo=swift)
@@ -15,30 +15,30 @@
 
 ---
 
-## Features
+## 功能特性
 
-- **Multi-project management** — add multiple `package.json` projects and switch between them instantly
-- **Auto-detection** — reads `packageManager` field to run scripts with `pnpm`, `npm`, or `yarn`
-- **Two script modes** — dev scripts use a toggle switch with live URL link; build/deploy scripts use a play button with output path
-- **Real-time logs** — streaming stdout/stderr in a dedicated log panel per script
-- **Custom categories** — define your own categories by key prefix (e.g. `mobile:`, `api:`), with SF Symbol icons and custom colors
-- **Custom extraction rules** — extract URLs or folder paths from log output using configurable line prefixes
-- **Session persistence** — restores last session state on launch; checks port liveness before marking dev scripts as running
-- **Immediate stop** — killing a script sends `SIGINT + SIGTERM` immediately; no hanging processes
-- **Graceful quit** — warns you when active scripts are running before the app exits, and cleans up all processes
+- **多项目管理** — 添加多个 `package.json` 项目，随时一键切换
+- **自动识别** — 读取 `packageManager` 字段，自动选用 `pnpm`、`npm` 或 `yarn` 执行脚本
+- **两种脚本模式** — 开发脚本使用开关切换并显示实时 URL；构建/部署脚本使用播放按钮并显示输出路径
+- **实时日志** — 每个脚本拥有独立日志面板，流式展示 stdout/stderr
+- **自定义分类** — 通过键名前缀（如 `mobile:`、`api:`）自定义分类，支持 SF Symbol 图标和自定义颜色
+- **自定义提取规则** — 通过可配置的行前缀从日志中提取 URL 或文件夹路径
+- **会话持久化** — 启动时恢复上次会话状态；标记开发脚本为运行中前会检测端口存活
+- **立即停止** — 终止脚本时立即发送 `SIGINT + SIGTERM`，不留僵尸进程
+- **安全退出** — 有活跃脚本运行时退出前会发出警告，并清理所有进程
 
-## Screenshot
+## 截图
 
 <div align="center">
-  <img src="assets/screenshot.png" width="720" alt="Depot screenshot" />
+  <img src="assets/screenshot.png" width="720" alt="Depot 截图" />
 </div>
 
-## Requirements
+## 环境要求
 
-- macOS 26 or later
-- A pnpm / npm / yarn workspace with a `package.json`
+- macOS 26 或更高版本
+- 包含 `package.json` 的 pnpm / npm / yarn 工作区
 
-## Build
+## 构建
 
 ```bash
 git clone https://github.com/lishiquann-cmyk/depot.git
@@ -46,18 +46,18 @@ cd depot
 open Depot.xcodeproj
 ```
 
-Build and run with ⌘R in Xcode.
+在 Xcode 中按 ⌘R 构建并运行。
 
-> App Sandbox is disabled to allow spawning shell processes. See `Depot.entitlements`.
+> App Sandbox 已禁用以允许启动 Shell 子进程，详见 `Depot.entitlements`。
 
-## Usage
+## 使用方法
 
-1. Launch Depot and click **添加项目** to select a `package.json`
-2. Scripts are automatically grouped into categories by key prefix
-3. Toggle a dev script to start it — the URL appears when the server is ready
-4. Right-click the category list to add custom categories
-5. Right-click the rules area to add log extraction rules
+1. 启动 Depot，点击 **添加项目** 选择一个 `package.json`
+2. 脚本将自动按键名前缀分组归类
+3. 切换开关启动开发脚本，服务就绪后 URL 将自动显示
+4. 右键点击分类列表可添加自定义分类
+5. 右键点击规则区域可添加日志提取规则
 
-## License
+## 许可证
 
 MIT
