@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/icon.png" width="160" alt="Depot" style="border-radius: 22%" />
+  <img src="assets/icon.png" width="160" alt="Depot" />
 
   # Depot
 
