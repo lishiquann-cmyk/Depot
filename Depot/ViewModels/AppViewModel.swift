@@ -432,8 +432,10 @@ final class AppViewModel {
         var env = ProcessInfo.processInfo.environment
         let home = FileManager.default.homeDirectoryForCurrentUser.path
         let extras = ["/usr/local/bin", "/opt/homebrew/bin", "/opt/homebrew/sbin",
-                      "\(home)/.local/bin", "\(home)/.npm/bin",
-                      "\(home)/.volta/bin", "\(home)/.nvm/bin"].joined(separator: ":")
+                      "\(home)/.local/bin", "\(home)/.local/share/pnpm",
+                      "\(home)/.npm/bin", "\(home)/.npm-global/bin",
+                      "\(home)/.volta/bin", "\(home)/.nvm/bin",
+                      "\(home)/.bun/bin"].joined(separator: ":")
         env["PATH"] = "\(extras):\(env["PATH"] ?? "/usr/bin:/bin")"
         env["FORCE_COLOR"] = "0"; env["NO_COLOR"] = "1"
         return env
