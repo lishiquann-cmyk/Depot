@@ -93,7 +93,7 @@ final class AppViewModel {
 
         do {
             let parsed = try parsePackageJSON(
-                at: URL(filePath: project.packageJSONPath),
+                at: URL(fileURLWithPath: project.packageJSONPath),
                 categories: categories
             )
             scripts = parsed.scripts
@@ -183,7 +183,7 @@ final class AppViewModel {
         let paths  = Dictionary(uniqueKeysWithValues: scripts.map { ($0.id, $0.extractedPath) })
 
         guard let parsed = try? parsePackageJSON(
-            at: URL(filePath: project.packageJSONPath),
+            at: URL(fileURLWithPath: project.packageJSONPath),
             categories: categories
         ) else { return }
 
@@ -238,13 +238,13 @@ final class AppViewModel {
 
     func startScript(_ script: Script) {
         guard let project = currentProject else { return }
-        let workingDir = URL(filePath: project.packageJSONPath).deletingLastPathComponent()
+        let workingDir = URL(fileURLWithPath: project.packageJSONPath).deletingLastPathComponent()
 
         script.reset()
         script.state = .loading
 
         let process = Process()
-        process.executableURL = URL(filePath: "/bin/zsh")
+        process.executableURL = URL(fileURLWithPath: "/bin/zsh")
         process.arguments = ["-l", "-c", "\(packageManager) run '\(script.id)'"]
         process.currentDirectoryURL = workingDir
         process.environment = buildEnvironment()
@@ -312,9 +312,9 @@ final class AppViewModel {
 
     func openFolder(_ path: String) {
         guard let project = currentProject else { return }
-        let workDir = URL(filePath: project.packageJSONPath).deletingLastPathComponent().path
+        let workDir = URL(fileURLWithPath: project.packageJSONPath).deletingLastPathComponent().path
         let full = path.hasPrefix("/") ? path : (workDir + "/" + path)
-        let url = URL(filePath: full)
+        let url = URL(fileURLWithPath: full)
         var isDir: ObjCBool = false
         if FileManager.default.fileExists(atPath: full, isDirectory: &isDir) {
             if isDir.boolValue {
@@ -323,7 +323,7 @@ final class AppViewModel {
                 NSWorkspace.shared.activateFileViewerSelecting([url])
             }
         } else {
-            NSWorkspace.shared.open(url.deletingLastPathComponent())
+            NSWorkspace.shared.open(URL(fileURLWithPath: full).deletingLastPathComponent())
         }
     }
 
